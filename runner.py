@@ -13,7 +13,7 @@ while True:
         process = subprocess.Popen(["python", "app.py"])
 
         # Wait for 3 minutes (180 seconds)
-        time.sleep(30)
+        time.sleep(180)
 
         # Terminate the Flask application process after 3 minutes
         process.terminate()
