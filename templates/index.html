@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>J.A.R.V.I.S. - Chatbot</title>
+    <style>
+        /* CSS styles for the chatbot UI */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+        .chatbox {
+            height: 285px;
+            overflow-y: scroll;
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        .message {
+            display: flex;
+            margin-bottom: 10px;
+        }
+
+        .user-message {
+            justify-content: flex-end;
+        }
+
+        .bot-message {
+            justify-content: flex-start;
+        }
+
+        .message-content {
+            max-width: 70%;
+            padding: 10px;
+            border-radius: 5px;
+            word-wrap: break-word;
+            line-height: 1.4;
+            font-size: 14px;
+            color: #fff;
+        }
+
+        .user-message .message-content {
+            background-color: #167dff;
+            text-align: right;
+            margin-left: auto;
+        }
+
+        .bot-message .message-content {
+            background-color: #1f1a1a;
+            text-align: left;
+            margin-right: auto;
+        }
+
+        .input-box {
+            margin-top: 10px;
+            padding: 10px;
+            width: 72%;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .send-button {
+            margin-left: 3px;
+            margin-top: 10px;
+            padding: 10px;
+            width: 17%;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .send-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 style="text-align: center;">J.A.R.V.I.S.</h1>
+        <div class="chatbox" id="chatbox">
+            {% for message in messages %}
+                <div class="message {{ message.sender }}-message">
+                    <div class="message-content">{{ message.content }}</div>
+                </div>
+            {% endfor %}
+        </div>
+        <form method="post" action="/">
+            <input type="text" name="user_message" id="user_message" placeholder="Type your message here..." class="input-box">
+            <input type="submit" value="Send" class="send-button">
+        </form>
+    </div>
+
+    <script>
+        // JavaScript code to scroll the chatbox to the bottom
+        var chatbox = document.getElementById("chatbox");
+        chatbox.scrollTop = chatbox.scrollHeight;
+        document.getElementById('user_message').focus();
+    </script>
+</body>
+</html>

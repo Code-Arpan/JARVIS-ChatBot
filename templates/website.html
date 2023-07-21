@@ -1,0 +1,61 @@
+<!-- Example HTML structure for embedding the chatbot with circular icon -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Website</title>
+  <!-- Include any necessary CSS stylesheets -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>Welcome to My Website</h1>
+
+  <!-- Circular icon container -->
+  <div id="chatbot-icon-container" style="display: flex; justify-content: center; align-items: center;">
+    <button id="chatbot-icon" onclick="toggleChatbot()">
+        <img src="https://img.freepik.com/premium-vector/robot-icon-chat-bot-sign-support-service-concept-chatbot-character-flat-style_41737-796.jpg?w=2000" alt="Chatbot Icon" style="max-width: 100%; max-height: 100%;">
+    </button>
+  </div>
+
+  <!-- Chatbot container -->
+  <div id="chatbot-container" class="collapsed"></div>
+
+  <!-- Include any necessary JavaScript files -->
+  <script>
+// Get references to the chatbot icon and container elements
+var chatbotIcon = document.getElementById('chatbot-icon');
+var chatbotContainer = document.getElementById('chatbot-container');
+
+// Toggle the chatbot visibility when the icon is clicked
+function toggleChatbot() {
+  chatbotContainer.classList.toggle('expanded');
+
+  if (chatbotContainer.classList.contains('expanded')) {
+    chatbotIcon.style.opacity = '0'; // Hide the chatbot icon when the container is expanded
+  } else {
+    chatbotIcon.style.opacity = '1'; // Show the chatbot icon when the container is collapsed
+  }
+}
+
+// Close the chatbot container when the user clicks outside of it
+document.addEventListener('click', function(event) {
+  if (!chatbotContainer.contains(event.target) && !chatbotIcon.contains(event.target)) {
+    chatbotContainer.classList.remove('expanded');
+    chatbotIcon.style.opacity = '0'; // Hide the chatbot icon immediately after closing the container
+    setTimeout(function() {
+      chatbotIcon.style.opacity = '1'; // Show the chatbot icon after a delay of 500ms
+    }, 200);
+  }
+});
+
+
+// Create an iframe and load the chatbot application within it
+var iframe = document.createElement('iframe');
+iframe.src = 'http://127.0.0.1:5000';
+iframe.style.width = '100%';
+iframe.style.height = '100%';
+iframe.style.border = 'none';
+chatbotContainer.appendChild(iframe);
+
+  </script>
+</body>
+</html>
