@@ -41,7 +41,7 @@ def save_chatstr():
 
 def chat(query):
     global chatStr
-    openai.api_key = "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"
+    openai.api_key = "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"
     chatStr += f"Master: {query}\nJ.A.R.V.I.S.: "
     response = openai.Completion.create(
         model="text-davinci-003",
