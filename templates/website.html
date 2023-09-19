@@ -24,9 +24,10 @@
 // Get references to the chatbot icon and container elements
 var chatbotIcon = document.getElementById('chatbot-icon');
 var chatbotContainer = document.getElementById('chatbot-container');
-
+chatbotContainer.style.opacity = '0';
 // Toggle the chatbot visibility when the icon is clicked
 function toggleChatbot() {
+    chatbotContainer.style.opacity = '1';
   chatbotContainer.classList.toggle('expanded');
 
   if (chatbotContainer.classList.contains('expanded')) {
@@ -42,7 +43,8 @@ document.addEventListener('click', function(event) {
     chatbotContainer.classList.remove('expanded');
     chatbotIcon.style.opacity = '0'; // Hide the chatbot icon immediately after closing the container
     setTimeout(function() {
-      chatbotIcon.style.opacity = '1'; // Show the chatbot icon after a delay of 500ms
+      chatbotIcon.style.opacity = '1';// Show the chatbot icon after a delay of 500ms
+        chatbotContainer.style.opacity = '0';
     }, 200);
   }
 });
@@ -50,7 +52,7 @@ document.addEventListener('click', function(event) {
 
 // Create an iframe and load the chatbot application within it
 var iframe = document.createElement('iframe');
-iframe.src = 'http://127.0.0.1:5000';
+iframe.src = 'https://jarvis-mg47.onrender.com/';
 iframe.style.width = '100%';
 iframe.style.height = '100%';
 iframe.style.border = 'none';

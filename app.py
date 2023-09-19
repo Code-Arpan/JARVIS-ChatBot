@@ -44,7 +44,7 @@ def chat(query):
     openai.api_key = "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"
     chatStr += f"Master: {query}\nJ.A.R.V.I.S.: "
     response = openai.Completion.create(
-        model="text-davinci-003",
+        model="gpt-3.5-turbo-instruct",
         prompt=chatStr,
         temperature=0.7,
         max_tokens=256,
