@@ -41,7 +41,7 @@ def save_chatstr():
 
 def chat(query):
     global chatStr
-    openai.api_key = "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"
+    openai.api_key = "Enter your API Key Here"
     chatStr += f"Master: {query}\nJ.A.R.V.I.S.: "
     response = openai.Completion.create(
         model="gpt-3.5-turbo-instruct",
